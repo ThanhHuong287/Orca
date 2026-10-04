@@ -1,0 +1,168 @@
+:root {
+  --navy: #0b1f33;
+  --deep: #123a5c;
+  --foam: #e8f4f8;
+  --sky: #9fd3e6;
+  --ink: #14212e;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Times New Roman", Times, "Noto Serif", serif;
+  line-height: 1.6;
+  color: var(--ink);
+  background-color: var(--foam);
+}
+
+/* ===== Skip link: chỉ hiện khi được focus ===== */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 10px;
+  padding: 10px 16px;
+  background-color: #ffffff;
+  color: var(--navy);
+  font-weight: bold;
+  border: 3px solid var(--navy);
+  border-radius: 6px;
+  z-index: 100;
+}
+.skip-link:focus { top: 10px; }
+
+/* ===== Header ===== */
+header {
+  background: linear-gradient(180deg, var(--navy), var(--deep));
+  color: #ffffff;
+  text-align: center;
+  padding: 0 16px 28px;
+}
+header h1 {
+  margin: 24px 0 4px;
+  font-size: 2.6rem;
+  letter-spacing: 1px;
+}
+header p { margin: 0; color: var(--sky); font-style: italic; }
+
+/* ===== Điều hướng (flex) ===== */
+nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 16px 0 0;
+}
+nav a {
+  display: block;
+  padding: 10px 22px;
+  color: #ffffff;
+  text-decoration: none;
+  font-family: "Segoe UI", Arial, "Noto Sans", sans-serif;
+  border: 2px solid var(--sky);
+  border-radius: 999px;
+  transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
+nav a:hover,
+nav a:focus {
+  background-color: var(--sky);
+  color: var(--navy);
+  transform: translateY(-3px);
+}
+nav a[aria-current="page"] {
+  background-color: #ffffff;
+  color: var(--navy);
+  border-color: #ffffff;
+}
+a:focus-visible { outline: 3px solid #ffbf47; outline-offset: 3px; }
+
+/* ===== Nội dung ===== */
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 28px 20px;
+}
+h2 { color: var(--deep); font-size: 1.9rem; }
+a { color: #0a4a85; }
+
+/* ===== Ảnh: mô hình hộp (viền, padding, bo góc) ===== */
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border: 4px solid var(--deep);
+  padding: 8px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  transition: transform 0.4s, box-shadow 0.4s;
+}
+img:hover {
+  transform: scale(1.04) rotate(-1deg);
+  box-shadow: 0 10px 22px rgba(11, 31, 51, 0.4);
+}
+figure { margin: 0; }
+figcaption {
+  font-size: 0.95rem;
+  padding: 8px 4px 0;
+  color: var(--deep);
+}
+
+/* ===== Trang chủ ===== */
+.intro { display: flex; flex-wrap: wrap; gap: 24px; align-items: center; }
+.intro > figure { flex: 1 1 320px; }
+.intro > div { flex: 1 1 320px; }
+
+/* ===== Lưới (grid) – trang Sự thật ===== */
+.facts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.fact-card {
+  background-color: #ffffff;
+  border: 2px solid var(--sky);
+  border-radius: 14px;
+  padding: 16px;
+}
+.fact-card h3 { margin-top: 0; color: var(--deep); }
+
+/* ===== Flex – thư viện ảnh ===== */
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: flex-start;
+  gap: 20px;
+}
+.gallery figure { flex: 1 1 280px; max-width: 310px; }
+
+/* nth-child: ảnh chẵn bo góc khác ảnh lẻ */
+.gallery figure:nth-child(even) img {
+  border-radius: 50% 12px 50% 12px;
+  border-color: #0a4a85;
+}
+.gallery figure:nth-child(odd) img {
+  border-radius: 12px 50% 12px 50%;
+}
+
+/* ===== Footer ===== */
+footer {
+  background-color: var(--navy);
+  color: #ffffff;
+  text-align: center;
+  padding: 18px;
+  margin-top: 20px;
+}
+footer a { color: var(--sky); }
+
+@media (max-width: 640px) {
+  .facts-grid { grid-template-columns: 1fr; }
+  header h1 { font-size: 2rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+  img:hover { transform: none; }
+}
